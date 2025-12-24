@@ -11,6 +11,30 @@ class FinanceTracker {
 
     this.init();
   }
+  renderCharts() {
+    this.renderRecentTransactions();
+  }
+  renderRecentTransactions() {
+    const container = document.getElementById("recentTransactionsList");
+    if (!container) return;
+
+    container.innerHTML = "";
+
+    const recent = [...this.transactions]
+      .sort((a, b) => new Date(b.date) - new Date(a.date))
+      .slice(0, 5);
+
+    if (recent.length === 0) {
+      container.innerHTML = "<p>No recent transactions.</p>";
+      return;
+    }
+
+    recent.forEach(t => {
+      const div = document.createElement("div");
+      div.textContent = `${t.description} – £${t.amount.toFixed(2)}`;
+      container.appendChild(div);
+    });
+  }
 
   init() {
     this.setupEventListeners();
@@ -248,12 +272,7 @@ class FinanceTracker {
     this.renderGoals();
   }
 
-  // -------------------------------
-  // Charts
-  // -------------------------------
-  renderCharts() {
-    // Charts optional – safe to leave empty for now
-  }
+  
 
   // -------------------------------
   // Storage
