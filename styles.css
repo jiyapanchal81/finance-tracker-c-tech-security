@@ -33,10 +33,11 @@ header h1 {
 }
 
 .header-stats {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
 }
+
 
 .stat-card {
     background: #f8f9fa;
@@ -70,32 +71,34 @@ header h1 {
 
 .tabs {
     display: flex;
-    background: white;
-    border-radius: 10px;
-    padding: 5px;
-    margin-bottom: 20px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    gap: 10px;
+    background: transparent;
+    padding: 0;
+    margin-bottom: 25px;
 }
-
 .tab-btn {
     flex: 1;
-    padding: 15px;
+    padding: 14px 0;
     border: none;
-    background: transparent;
-    cursor: pointer;
-    border-radius: 8px;
+    border-radius: 12px;
+    background: #ffffff;
+    color: #2c3e50;
     font-size: 1rem;
-    font-weight: 500;
-    transition: all 0.3s ease;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transition: all 0.25s ease;
 }
+.tab-btn.active {
+    background: linear-gradient(135deg, #3498db, #5dade2);
+    color: #ffffff;
+    box-shadow: 0 6px 18px rgba(52, 152, 219, 0.45);
+    transform: translateY(-2px);
+}
+
 
 .tab-btn:hover {
-    background: #f8f9fa;
-}
-
-.tab-btn.active {
-    background: #3498db;
-    color: white;
+    transform: translateY(-1px);
 }
 
 .tab-content {
@@ -225,6 +228,9 @@ header h1 {
 }
 
 .transaction-amount {
+    display: flex;
+    align-items: center;
+    gap: 10px;
     font-weight: bold;
     font-size: 1.1rem;
 }
@@ -243,7 +249,7 @@ header h1 {
     padding: 4px 8px;
     border-radius: 12px;
     font-size: 0.8rem;
-    margin-left: 10px;
+    margin-left: 18px;
 }
 
 .budget-progress {
@@ -372,4 +378,31 @@ header h1 {
         align-items: stretch;
         gap: 10px;
     }
+}
+.empty-text {
+    color: #777;
+    font-size: 0.95rem;
+    text-align: center;
+    margin-top: 60px;
+}
+.chart-container canvas {
+  max-height: 220px;
+}
+.transaction-amount {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.transaction-amount .amount {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.transaction-category {
+  margin-top: 6px;
+  font-size: 0.75rem;
+  padding: 3px 10px;
+  border-radius: 12px;
+  opacity: 0.9;
 }
